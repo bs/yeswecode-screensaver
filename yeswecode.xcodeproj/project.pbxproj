@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BBA8EA371617EDEF001D8E23 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA361617EDEF001D8E23 /* Cocoa.framework */; };
+		BBA8EA391617EDEF001D8E23 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */; };
+		BBA8EA431617EDEF001D8E23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */; };
+		BBA8EA471617EDEF001D8E23 /* yeswecodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA8EA461617EDEF001D8E23 /* yeswecodeView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BBA8EA331617EDEF001D8E23 /* yeswecode.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yeswecode.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBA8EA361617EDEF001D8E23 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
+		BBA8EA3B1617EDEF001D8E23 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BBA8EA3C1617EDEF001D8E23 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BBA8EA3D1617EDEF001D8E23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BBA8EA401617EDEF001D8E23 /* yeswecode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "yeswecode-Info.plist"; sourceTree = "<group>"; };
+		BBA8EA421617EDEF001D8E23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBA8EA441617EDEF001D8E23 /* yeswecode-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "yeswecode-Prefix.pch"; sourceTree = "<group>"; };
+		BBA8EA451617EDEF001D8E23 /* yeswecodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yeswecodeView.h; sourceTree = "<group>"; };
+		BBA8EA461617EDEF001D8E23 /* yeswecodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = yeswecodeView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBA8EA2E1617EDEF001D8E23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBA8EA371617EDEF001D8E23 /* Cocoa.framework in Frameworks */,
+				BBA8EA391617EDEF001D8E23 /* ScreenSaver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BBA8EA261617EDEF001D8E23 = {
+			isa = PBXGroup;
+			children = (
+				BBA8EA3E1617EDEF001D8E23 /* yeswecode */,
+				BBA8EA351617EDEF001D8E23 /* Frameworks */,
+				BBA8EA341617EDEF001D8E23 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BBA8EA341617EDEF001D8E23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8EA331617EDEF001D8E23 /* yeswecode.saver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBA8EA351617EDEF001D8E23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8EA361617EDEF001D8E23 /* Cocoa.framework */,
+				BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */,
+				BBA8EA3A1617EDEF001D8E23 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBA8EA3A1617EDEF001D8E23 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8EA3B1617EDEF001D8E23 /* AppKit.framework */,
+				BBA8EA3C1617EDEF001D8E23 /* CoreData.framework */,
+				BBA8EA3D1617EDEF001D8E23 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BBA8EA3E1617EDEF001D8E23 /* yeswecode */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8EA451617EDEF001D8E23 /* yeswecodeView.h */,
+				BBA8EA461617EDEF001D8E23 /* yeswecodeView.m */,
+				BBA8EA3F1617EDEF001D8E23 /* Supporting Files */,
+			);
+			path = yeswecode;
+			sourceTree = "<group>";
+		};
+		BBA8EA3F1617EDEF001D8E23 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8EA401617EDEF001D8E23 /* yeswecode-Info.plist */,
+				BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */,
+				BBA8EA441617EDEF001D8E23 /* yeswecode-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BBA8EA2F1617EDEF001D8E23 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BBA8EA321617EDEF001D8E23 /* yeswecode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBA8EA4A1617EDEF001D8E23 /* Build configuration list for PBXNativeTarget "yeswecode" */;
+			buildPhases = (
+				BBA8EA2D1617EDEF001D8E23 /* Sources */,
+				BBA8EA2E1617EDEF001D8E23 /* Frameworks */,
+				BBA8EA2F1617EDEF001D8E23 /* Headers */,
+				BBA8EA301617EDEF001D8E23 /* Resources */,
+				BBA8EA311617EDEF001D8E23 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yeswecode;
+			productName = yeswecode;
+			productReference = BBA8EA331617EDEF001D8E23 /* yeswecode.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBA8EA281617EDEF001D8E23 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Britt Selvitelle";
+			};
+			buildConfigurationList = BBA8EA2B1617EDEF001D8E23 /* Build configuration list for PBXProject "yeswecode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BBA8EA261617EDEF001D8E23;
+			productRefGroup = BBA8EA341617EDEF001D8E23 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBA8EA321617EDEF001D8E23 /* yeswecode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBA8EA301617EDEF001D8E23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBA8EA431617EDEF001D8E23 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		BBA8EA311617EDEF001D8E23 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBA8EA2D1617EDEF001D8E23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBA8EA471617EDEF001D8E23 /* yeswecodeView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBA8EA421617EDEF001D8E23 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BBA8EA481617EDEF001D8E23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BBA8EA491617EDEF001D8E23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BBA8EA4B1617EDEF001D8E23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yeswecode/yeswecode-Prefix.pch";
+				INFOPLIST_FILE = "yeswecode/yeswecode-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		BBA8EA4C1617EDEF001D8E23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yeswecode/yeswecode-Prefix.pch";
+				INFOPLIST_FILE = "yeswecode/yeswecode-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBA8EA2B1617EDEF001D8E23 /* Build configuration list for PBXProject "yeswecode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBA8EA481617EDEF001D8E23 /* Debug */,
+				BBA8EA491617EDEF001D8E23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBA8EA4A1617EDEF001D8E23 /* Build configuration list for PBXNativeTarget "yeswecode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBA8EA4B1617EDEF001D8E23 /* Debug */,
+				BBA8EA4C1617EDEF001D8E23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BBA8EA281617EDEF001D8E23 /* Project object */;
+}
