@@ -9,9 +9,24 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>yeswecodeDebuggingPreview.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>BB6F57D4161AD9030082F059</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB6F57EE161AD9040082F059</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BBA8EA321617EDEF001D8E23</key>
 		<dict>
 			<key>primary</key>

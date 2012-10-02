@@ -13,9 +13,9 @@
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
-    stepSizes = [[[NSMutableArray alloc] init] retain];
-    finalBlueToRed = [[[NSMutableArray alloc] init] retain];
-    finalRedToBlue = [[[NSMutableArray alloc] init] retain];
+    stepSizes = [[NSMutableArray alloc] init];
+    finalBlueToRed = [[NSMutableArray alloc] init];
+    finalRedToBlue = [[NSMutableArray alloc] init];
    
     // colorState - Indicates if we're fading the background from red to blue or visa-versa
     // 0 - blue to red
@@ -87,6 +87,27 @@
     [super drawRect:rect];
     [self drawBackground];
     [self drawBaracktocat];
+    
+    static double const kSplashScreenTitleFontSizeScale        = 0.10;
+    
+    NSColor *textColor = [NSColor whiteColor];
+    int fontSize       = (int)(rect.size.height * kSplashScreenTitleFontSizeScale);
+
+    
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSFont fontWithName:@"Helvetica Neue" size:fontSize], NSFontAttributeName,
+                                    textColor, NSForegroundColorAttributeName,
+                                    nil];
+
+    
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:
+                                           @"Helveticolor" attributes: textAttributes];
+    
+    NSSize attrSize = [attributedText size];
+    int xOffset     = (rect.size.width / 2) - (attrSize.width / 2);
+    int yOffset     = (rect.size.height - (rect.size.height * 1)) + (attrSize.height);
+    
+    [attributedText drawAtPoint:NSMakePoint(xOffset, yOffset)];
 }
 
 - (void)drawBaracktocat
@@ -188,8 +209,8 @@
     }
 
     
-   [self drawBackground];
-    [self drawBaracktocat];
+//    [self drawBackground];
+//    [self drawBaracktocat];
     return;
 }
 

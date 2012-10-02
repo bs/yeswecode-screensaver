@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB6F57D7161AD9030082F059 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA361617EDEF001D8E23 /* Cocoa.framework */; };
+		BB6F57DD161AD9030082F059 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB6F57DB161AD9030082F059 /* InfoPlist.strings */; };
+		BB6F57DF161AD9030082F059 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6F57DE161AD9030082F059 /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB6F57E6161AD9030082F059 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6F57E5161AD9030082F059 /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB6F57E9161AD9040082F059 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6F57E7161AD9040082F059 /* MainMenu.xib */; };
+		BB6F5804161ADE580082F059 /* yeswecodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA8EA461617EDEF001D8E23 /* yeswecodeView.m */; };
+		BB6F5805161ADE940082F059 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */; };
+		BB6F5808161AE3850082F059 /* baracktocat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB801C731618E1B500AC283B /* baracktocat.jpg */; };
 		BB801C741618E1B500AC283B /* baracktocat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB801C731618E1B500AC283B /* baracktocat.jpg */; };
 		BBA8EA371617EDEF001D8E23 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA361617EDEF001D8E23 /* Cocoa.framework */; };
 		BBA8EA391617EDEF001D8E23 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */; };
@@ -15,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB6F57D5161AD9030082F059 /* yeswecodeDebuggingPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yeswecodeDebuggingPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6F57DA161AD9030082F059 /* yeswecodeDebuggingPreview-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "yeswecodeDebuggingPreview-Info.plist"; sourceTree = "<group>"; };
+		BB6F57DC161AD9030082F059 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BB6F57DE161AD9030082F059 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BB6F57E0161AD9030082F059 /* yeswecodeDebuggingPreview-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "yeswecodeDebuggingPreview-Prefix.pch"; sourceTree = "<group>"; };
+		BB6F57E4161AD9030082F059 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BB6F57E5161AD9030082F059 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BB6F57E8161AD9040082F059 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BB6F57F0161AD9040082F059 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		BB801C731618E1B500AC283B /* baracktocat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = baracktocat.jpg; sourceTree = "<group>"; };
 		BBA8EA331617EDEF001D8E23 /* yeswecode.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yeswecode.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA8EA361617EDEF001D8E23 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -30,6 +47,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BB6F57D2161AD9030082F059 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB6F5805161ADE940082F059 /* ScreenSaver.framework in Frameworks */,
+				BB6F57D7161AD9030082F059 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBA8EA2E1617EDEF001D8E23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,10 +68,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB6F57D8161AD9030082F059 /* yeswecodeDebuggingPreview */ = {
+			isa = PBXGroup;
+			children = (
+				BB6F57E4161AD9030082F059 /* AppDelegate.h */,
+				BB6F57E5161AD9030082F059 /* AppDelegate.m */,
+				BB6F57E7161AD9040082F059 /* MainMenu.xib */,
+				BB6F57D9161AD9030082F059 /* Supporting Files */,
+			);
+			path = yeswecodeDebuggingPreview;
+			sourceTree = "<group>";
+		};
+		BB6F57D9161AD9030082F059 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB6F57DA161AD9030082F059 /* yeswecodeDebuggingPreview-Info.plist */,
+				BB6F57DB161AD9030082F059 /* InfoPlist.strings */,
+				BB6F57DE161AD9030082F059 /* main.m */,
+				BB6F57E0161AD9030082F059 /* yeswecodeDebuggingPreview-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BBA8EA261617EDEF001D8E23 = {
 			isa = PBXGroup;
 			children = (
 				BBA8EA3E1617EDEF001D8E23 /* yeswecode */,
+				BB6F57D8161AD9030082F059 /* yeswecodeDebuggingPreview */,
 				BBA8EA351617EDEF001D8E23 /* Frameworks */,
 				BBA8EA341617EDEF001D8E23 /* Products */,
 			);
@@ -55,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				BBA8EA331617EDEF001D8E23 /* yeswecode.saver */,
+				BB6F57D5161AD9030082F059 /* yeswecodeDebuggingPreview.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +114,7 @@
 			children = (
 				BBA8EA361617EDEF001D8E23 /* Cocoa.framework */,
 				BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */,
+				BB6F57F0161AD9040082F059 /* SenTestingKit.framework */,
 				BBA8EA3A1617EDEF001D8E23 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -113,6 +164,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		BB6F57D4161AD9030082F059 /* yeswecodeDebuggingPreview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB6F57FE161AD9040082F059 /* Build configuration list for PBXNativeTarget "yeswecodeDebuggingPreview" */;
+			buildPhases = (
+				BB6F57D1161AD9030082F059 /* Sources */,
+				BB6F57D2161AD9030082F059 /* Frameworks */,
+				BB6F57D3161AD9030082F059 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yeswecodeDebuggingPreview;
+			productName = yeswecodeDebuggingPreview;
+			productReference = BB6F57D5161AD9030082F059 /* yeswecodeDebuggingPreview.app */;
+			productType = "com.apple.product-type.application";
+		};
 		BBA8EA321617EDEF001D8E23 /* yeswecode */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBA8EA4A1617EDEF001D8E23 /* Build configuration list for PBXNativeTarget "yeswecode" */;
@@ -154,11 +222,22 @@
 			projectRoot = "";
 			targets = (
 				BBA8EA321617EDEF001D8E23 /* yeswecode */,
+				BB6F57D4161AD9030082F059 /* yeswecodeDebuggingPreview */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BB6F57D3161AD9030082F059 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB6F5808161AE3850082F059 /* baracktocat.jpg in Resources */,
+				BB6F57DD161AD9030082F059 /* InfoPlist.strings in Resources */,
+				BB6F57E9161AD9040082F059 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBA8EA301617EDEF001D8E23 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +260,16 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BB6F57D1161AD9030082F059 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB6F5804161ADE580082F059 /* yeswecodeView.m in Sources */,
+				BB6F57DF161AD9030082F059 /* main.m in Sources */,
+				BB6F57E6161AD9030082F059 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBA8EA2D1617EDEF001D8E23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,6 +281,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BB6F57DB161AD9030082F059 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB6F57DC161AD9030082F059 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BB6F57E7161AD9040082F059 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB6F57E8161AD9040082F059 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -203,6 +308,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BB6F57FF161AD9040082F059 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yeswecodeDebuggingPreview/yeswecodeDebuggingPreview-Prefix.pch";
+				INFOPLIST_FILE = "yeswecodeDebuggingPreview/yeswecodeDebuggingPreview-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BB6F5800161AD9040082F059 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yeswecodeDebuggingPreview/yeswecodeDebuggingPreview-Prefix.pch";
+				INFOPLIST_FILE = "yeswecodeDebuggingPreview/yeswecodeDebuggingPreview-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		BBA8EA481617EDEF001D8E23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -216,7 +349,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -246,7 +379,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -260,6 +393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "yeswecode/yeswecode-Prefix.pch";
 				INFOPLIST_FILE = "yeswecode/yeswecode-Info.plist";
@@ -273,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "yeswecode/yeswecode-Prefix.pch";
 				INFOPLIST_FILE = "yeswecode/yeswecode-Info.plist";
@@ -285,6 +420,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BB6F57FE161AD9040082F059 /* Build configuration list for PBXNativeTarget "yeswecodeDebuggingPreview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB6F57FF161AD9040082F059 /* Debug */,
+				BB6F5800161AD9040082F059 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		BBA8EA2B1617EDEF001D8E23 /* Build configuration list for PBXProject "yeswecode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
