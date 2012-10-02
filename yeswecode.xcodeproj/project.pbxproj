@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB801C741618E1B500AC283B /* baracktocat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB801C731618E1B500AC283B /* baracktocat.jpg */; };
 		BBA8EA371617EDEF001D8E23 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA361617EDEF001D8E23 /* Cocoa.framework */; };
 		BBA8EA391617EDEF001D8E23 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */; };
 		BBA8EA431617EDEF001D8E23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB801C731618E1B500AC283B /* baracktocat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = baracktocat.jpg; sourceTree = "<group>"; };
 		BBA8EA331617EDEF001D8E23 /* yeswecode.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yeswecode.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA8EA361617EDEF001D8E23 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
@@ -90,6 +92,7 @@
 		BBA8EA3F1617EDEF001D8E23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB801C731618E1B500AC283B /* baracktocat.jpg */,
 				BBA8EA401617EDEF001D8E23 /* yeswecode-Info.plist */,
 				BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */,
 				BBA8EA441617EDEF001D8E23 /* yeswecode-Prefix.pch */,
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBA8EA431617EDEF001D8E23 /* InfoPlist.strings in Resources */,
+				BB801C741618E1B500AC283B /* baracktocat.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +301,7 @@
 				BBA8EA4C1617EDEF001D8E23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
