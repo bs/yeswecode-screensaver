@@ -9,28 +9,25 @@
 #import <ScreenSaver/ScreenSaver.h>
 
 @interface yeswecodeView : ScreenSaverView {
+    NSRect backgroundRect;
+    NSRect octoRect;
+
     NSImage *octaImage;
+
+    NSInteger colorState;
+    NSMutableArray *finalRedToBlue;
+    NSMutableArray *finalBlueToRed;
+
     float currentRed;
     float currentGreen;
     float currentBlue;
     
-    NSInteger colorState;
-    int tick;
-    
-    double step;
+    NSMutableArray *currentStepSizes;
     double redStep;
     double greenStep;
     double blueStep;
-    double redStepSize;
-    double greenStepSize;
-    double blueStepSize;
-    NSMutableArray *finalRedToBlue;
-    NSMutableArray *finalBlueToRed;
-    NSMutableArray *stepSizes;
+
+    int delayTick;
 }
-
-- (void)drawBackground: (NSInteger)changeRed;
-- (void)drawBaraktocat;
-
 
 @end
