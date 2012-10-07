@@ -14,7 +14,8 @@
 @property (nonatomic) NSRect backgroundRect;
 @property (nonatomic) NSRect octoRect;
 
-@property (nonatomic, strong) NSImage *octaImage;
+@property (nonatomic, assign) NSImageView *octoImageView;
+@property (nonatomic, assign) NSTextField *timeLeftLabel;
 
 @property (nonatomic) NSInteger colorState;
 @property (nonatomic, strong) NSMutableArray *finalRedToBlue;

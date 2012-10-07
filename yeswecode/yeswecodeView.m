@@ -26,26 +26,35 @@
     // 1 - red to blue
     self.colorState = 0;
     
-    // Load the octacat
-    NSBundle* saverBundle = [NSBundle bundleForClass:[self class]];
-    NSString* octaPath = [saverBundle pathForImageResource:@"baracktocat.jpg"];
-    self.octaImage = [[NSImage alloc] initWithContentsOfFile:octaPath];
+    // Load the octocat into an NSImageView
+    NSBundle *saverBundle = [NSBundle bundleForClass:[self class]];
+    NSString *octaPath = [saverBundle pathForImageResource:@"baracktocat.jpg"];
+    NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 600, 600)];
+    imageView.image = [[NSImage alloc] initWithContentsOfFile:octaPath];
+    [self addSubview:imageView];
+    self.octoImageView = imageView;
     
-    NSSize octoViewSize  = size;
-    NSSize octoImageSize = NSMakeSize(600, 600);
+    // Create a label to hold the "time remaining" string
+    NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 20, self.bounds.size.width, 100)];
     
-    NSPoint octoViewCenter;
-    octoViewCenter.x = octoViewSize.width  * 0.50;
-    octoViewCenter.y = octoViewSize.height * 0.50;
+    // Allow the label to grow/shrink with the parent view
+    label.autoresizingMask = NSViewWidthSizable;
     
-    NSPoint octoImageOrigin = octoViewCenter;
-    octoImageOrigin.x -= octoImageSize.width  * 0.50;
-    octoImageOrigin.y -= octoImageSize.height * 0.38;
+    // Anchor the label to the bottom of the parent view
+    label.autoresizingMask |= NSViewMaxYMargin;
     
-    r = self.octoRect;
-    r.origin = octoImageOrigin;
-    r.size = octoImageSize;
-    self.octoRect = r;
+    label.alignment = NSCenterTextAlignment;
+    
+    label.backgroundColor = [NSColor clearColor];
+    [label setEditable:NO];
+    [label setBezeled:NO];
+    label.textColor = [NSColor colorWithDeviceRed:254.0f/255.0f
+                                            green:229.0f/255.0f
+                                             blue:161.0f/255.0f
+                                            alpha:1.0];
+    label.font = [NSFont fontWithName:@"Helvetica Neue" size:24.0];
+    [self addSubview:label];
+    self.timeLeftLabel = label;
     
     self.finalBlueToRed = [[NSMutableArray alloc] init];
     self.finalRedToBlue = [[NSMutableArray alloc] init];
@@ -198,28 +207,16 @@
 
 - (void)drawBaracktocat
 {
-    [self.octaImage drawInRect:self.octoRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    // Position the octocat image in the center of the view
+    CGRect r = self.octoImageView.frame;
+    r.origin.x = self.bounds.size.width / 2 - r.size.width / 2;
+    r.origin.y = self.bounds.size.height / 2 - r.size.width / 2.2;
+    self.octoImageView.frame = r;
 }
 
 - (void)drawTimeLeft
 {
     // Font setup
-    // XXX I have no clue why things crash if I init this data up top =(
-    // XXX Move a lot of these calculations out of here
-    float fontRed = 254.0f/255.0f;
-    float fontGreen = 229.0f/255.0f;
-    float fontBlue = 161.0f/255.0f;
-    float fontAlpha = 1.0f;
-    double fontScale = 0.04;
-
-    NSColor *textColor = [NSColor colorWithDeviceRed: fontRed green: fontGreen blue: fontBlue alpha: fontAlpha];
-    int fontSize       = (self.backgroundRect.size.height * fontScale);
-
-    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                      [NSFont fontWithName:@"Helvetica Neue" size:fontSize], NSFontAttributeName,
-                      textColor, NSForegroundColorAttributeName,
-                      nil];
-
     // Time left between E-Day and now
     // XXX Just get the seconds between the two dates
     // XXX Don't use dateWithNaturalLanguageString
@@ -244,14 +241,15 @@
 
     NSString *timeLeft = [NSString stringWithFormat:@"%ld days, %ld hours, %ld minutes and %ld seconds.", daysLeft, hoursLeft, minutesLeft, secondsLeft];
 
-    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:
-                                          timeLeft attributes: textAttributes];
-
-    NSSize attrSize = [attributedText size];
-    int xOffset     = (self.backgroundRect.size.width / 2) - (attrSize.width / 2);
-    int yOffset     = (self.backgroundRect.size.height - (self.backgroundRect.size.height * 0.9)) + (attrSize.height);
-
-    [attributedText drawAtPoint:NSMakePoint(xOffset, yOffset)];
+    self.timeLeftLabel.stringValue = timeLeft;
+    self.timeLeftLabel.font = [NSFont fontWithName:@"Helvetica Neue" size:self.bounds.size.height * 0.04];
+    
+    // Adjust the height of self.timeLeftLabel so that it's always a set distance from
+    // the bottom of its parent view.
+    NSSize s = [timeLeft sizeWithAttributes:@{NSFontAttributeName: self.timeLeftLabel.font}];
+    CGRect r = self.timeLeftLabel.frame;
+    r.size.height = s.height;
+    self.timeLeftLabel.frame = r;
 }
 
 - (void)drawBackground
