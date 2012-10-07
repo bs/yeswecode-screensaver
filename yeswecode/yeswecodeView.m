@@ -109,9 +109,80 @@
     [super stopAnimation];
 }
 
+// XXX This is inefficient and altogether a little wacky
+// XXX I like the fade from blue->red after the first iteration of accelleration
+//       - Calculate what this is up front
+// XXX I don't like the red->blue deceleration due to the pause in the middle
+//       - Don't get rid of red so quickly and leave blue so much time
 - (void)drawRect:(NSRect)rect
 {
     [super drawRect:rect];
+    // blue -> red
+    if (self.colorState == 0) {
+        double finalRed = [self.finalBlueToRed[0] doubleValue];
+        double finalGreen = [self.finalBlueToRed[1] doubleValue];
+        double finalBlue = [self.finalBlueToRed[2] doubleValue];
+        
+        if (self.currentRed < finalRed) {
+            self.currentRed += [self.currentStepSizes[2] doubleValue];
+            self.currentStepSizes[0] = [NSNumber numberWithDouble:[self.currentStepSizes[2] doubleValue]+self.redStep];
+        }
+        
+        if (self.currentGreen > finalGreen) {
+            self.currentGreen -= [self.currentStepSizes[1] doubleValue];
+            self.currentStepSizes[1] = [NSNumber numberWithDouble:[self.currentStepSizes[1] doubleValue]+self.greenStep];
+        }
+        
+        if (self.currentBlue > finalBlue) {
+            self.currentBlue -= [self.currentStepSizes[0] doubleValue];
+            self.currentStepSizes[2] = [NSNumber numberWithDouble:[self.currentStepSizes[0] doubleValue]+self.blueStep];
+        }
+        
+        if (self.currentRed >= finalRed && self.currentGreen <= finalGreen && self.currentBlue <= finalBlue) {
+            self.colorState = 1;
+            self.currentStepSizes[0] = [NSNumber numberWithDouble:self.redStep];
+            self.currentStepSizes[0] = [NSNumber numberWithDouble:self.greenStep];
+            self.currentStepSizes[0] = [NSNumber numberWithDouble:self.blueStep];
+        }
+    }
+    
+    // red -> blue
+    else if (self.colorState == 1) {
+        double finalRed = [self.finalRedToBlue[0] doubleValue];
+        double finalGreen = [self.finalRedToBlue[1] doubleValue];
+        double finalBlue = [self.finalRedToBlue[2] doubleValue];
+        
+        if (self.currentRed > finalRed) {
+            self.currentRed -= [self.currentStepSizes[0] doubleValue];
+            self.currentStepSizes[0] = [NSNumber numberWithDouble:[self.currentStepSizes[0] doubleValue]+self.redStep];
+        }
+        
+        if (self.currentGreen < finalGreen) {
+            self.currentGreen += [self.currentStepSizes[1] doubleValue];
+            self.currentStepSizes[1] = [NSNumber numberWithDouble:[self.currentStepSizes[1] doubleValue]+self.greenStep];
+        }
+        
+        if (self.currentBlue < finalBlue) {
+            self.currentBlue += ([self.currentStepSizes[2] doubleValue]);
+            self.currentStepSizes[2] = [NSNumber numberWithDouble:[self.currentStepSizes[2] doubleValue]+self.blueStep];
+        }
+        
+        if (self.currentRed <= finalRed && self.currentGreen >= finalGreen && self.currentBlue >= finalBlue) {
+            self.delayTick += 1;
+            if (self.delayTick == 400) {
+                self.delayTick = 0;
+                self.colorState = 0;
+                self.currentStepSizes[0] = [NSNumber numberWithDouble:self.redStep];
+                self.currentStepSizes[0] = [NSNumber numberWithDouble:self.greenStep];
+                self.currentStepSizes[0] = [NSNumber numberWithDouble:self.blueStep];
+            }
+        }
+    }
+    
+    [self drawBackground];
+    [self drawBaracktocat];
+    [self drawTimeLeft];
+
 }
 
 - (void)drawBaracktocat
@@ -185,79 +256,9 @@
     NSRectFill(self.backgroundRect);
 }
 
-// XXX This is inefficient and altogether a little wacky
-// XXX I like the fade from blue->red after the first iteration of accelleration
-//       - Calculate what this is up front
-// XXX I don't like the red->blue deceleration due to the pause in the middle
-//       - Don't get rid of red so quickly and leave blue so much time
 - (void)animateOneFrame
 {
-    // blue -> red
-    if (self.colorState == 0) {
-        double finalRed = [self.finalBlueToRed[0] doubleValue];
-        double finalGreen = [self.finalBlueToRed[1] doubleValue];
-        double finalBlue = [self.finalBlueToRed[2] doubleValue];
-
-        if (self.currentRed < finalRed) {
-            self.currentRed += [self.currentStepSizes[2] doubleValue];
-            self.currentStepSizes[0] = [NSNumber numberWithDouble:[self.currentStepSizes[2] doubleValue]+self.redStep];
-        }
-
-        if (self.currentGreen > finalGreen) {
-            self.currentGreen -= [self.currentStepSizes[1] doubleValue];
-            self.currentStepSizes[1] = [NSNumber numberWithDouble:[self.currentStepSizes[1] doubleValue]+self.greenStep];
-        }
-
-        if (self.currentBlue > finalBlue) {
-            self.currentBlue -= [self.currentStepSizes[0] doubleValue];
-            self.currentStepSizes[2] = [NSNumber numberWithDouble:[self.currentStepSizes[0] doubleValue]+self.blueStep];
-        }
-
-        if (self.currentRed >= finalRed && self.currentGreen <= finalGreen && self.currentBlue <= finalBlue) {
-            self.colorState = 1;
-            self.currentStepSizes[0] = [NSNumber numberWithDouble:self.redStep];
-            self.currentStepSizes[0] = [NSNumber numberWithDouble:self.greenStep];
-            self.currentStepSizes[0] = [NSNumber numberWithDouble:self.blueStep];
-        }
-    }
-
-    // red -> blue
-    else if (self.colorState == 1) {
-        double finalRed = [self.finalRedToBlue[0] doubleValue];
-        double finalGreen = [self.finalRedToBlue[1] doubleValue];
-        double finalBlue = [self.finalRedToBlue[2] doubleValue];
-
-        if (self.currentRed > finalRed) {
-            self.currentRed -= [self.currentStepSizes[0] doubleValue];
-            self.currentStepSizes[0] = [NSNumber numberWithDouble:[self.currentStepSizes[0] doubleValue]+self.redStep];
-        }
-
-        if (self.currentGreen < finalGreen) {
-            self.currentGreen += [self.currentStepSizes[1] doubleValue];
-            self.currentStepSizes[1] = [NSNumber numberWithDouble:[self.currentStepSizes[1] doubleValue]+self.greenStep];
-        }
-
-        if (self.currentBlue < finalBlue) {
-            self.currentBlue += ([self.currentStepSizes[2] doubleValue]);
-            self.currentStepSizes[2] = [NSNumber numberWithDouble:[self.currentStepSizes[2] doubleValue]+self.blueStep];
-        }
-
-        if (self.currentRed <= finalRed && self.currentGreen >= finalGreen && self.currentBlue >= finalBlue) {
-            self.delayTick += 1;
-            if (self.delayTick == 400) {
-                self.delayTick = 0;
-                self.colorState = 0;
-                self.currentStepSizes[0] = [NSNumber numberWithDouble:self.redStep];
-                self.currentStepSizes[0] = [NSNumber numberWithDouble:self.greenStep];
-                self.currentStepSizes[0] = [NSNumber numberWithDouble:self.blueStep];
-            }
-        }
-    }
-
-    [self drawBackground];
-    [self drawBaracktocat];
-    [self drawTimeLeft];
-    return;
+    self.needsDisplay = YES;
 }
 
 - (BOOL)hasConfigureSheet
