@@ -10,90 +10,101 @@
 
 @implementation yeswecodeView
 
-// XXX Move more bits to consts
+- (void)commonInit {
+    [self setAnimationTimeInterval:1/30.0];
+    
+    NSSize size = [self bounds].size;
+    
+    CGRect r = self.backgroundRect;
+    r.origin.x = 0;
+    r.origin.y = 0;
+    r.size     = NSMakeSize(size.width, size.height);
+    self.backgroundRect = r;
+    
+    // colorState - Indicates if we're fading the background from red to blue or visa-versa
+    // 0 - blue to red
+    // 1 - red to blue
+    self.colorState = 0;
+    
+    // Load the octacat
+    NSBundle* saverBundle = [NSBundle bundleForClass:[self class]];
+    NSString* octaPath = [saverBundle pathForImageResource:@"baracktocat.jpg"];
+    self.octaImage = [[NSImage alloc] initWithContentsOfFile:octaPath];
+    
+    NSSize octoViewSize  = size;
+    NSSize octoImageSize = NSMakeSize(600, 600);
+    
+    NSPoint octoViewCenter;
+    octoViewCenter.x = octoViewSize.width  * 0.50;
+    octoViewCenter.y = octoViewSize.height * 0.50;
+    
+    NSPoint octoImageOrigin = octoViewCenter;
+    octoImageOrigin.x -= octoImageSize.width  * 0.50;
+    octoImageOrigin.y -= octoImageSize.height * 0.38;
+    
+    r = self.octoRect;
+    r.origin = octoImageOrigin;
+    r.size = octoImageSize;
+    self.octoRect = r;
+    
+    self.finalBlueToRed = [[NSMutableArray alloc] init];
+    self.finalRedToBlue = [[NSMutableArray alloc] init];
+    
+    // Polar red value
+    [self.finalBlueToRed addObject:[NSNumber numberWithDouble:238.0]];
+    [self.finalBlueToRed addObject:[NSNumber numberWithDouble:0.0]];
+    [self.finalBlueToRed addObject:[NSNumber numberWithDouble:0.0]];
+    
+    // Polar blue value
+    [self.finalRedToBlue addObject:[NSNumber numberWithDouble:100.0]];
+    [self.finalRedToBlue addObject:[NSNumber numberWithDouble:150.0]];
+    [self.finalRedToBlue addObject:[NSNumber numberWithDouble:160.0]];
+    
+    // Calculate the step size to converge on
+    double redStepSize = fmax([self.finalRedToBlue[0] doubleValue], [self.finalBlueToRed[0] doubleValue]) - fmin([self.finalRedToBlue[0] doubleValue], [self.finalBlueToRed[0] doubleValue]);
+    
+    double greenStepSize = fmax([self.finalRedToBlue[1] doubleValue], [self.finalBlueToRed[1] doubleValue]) - fmin([self.finalRedToBlue[1] doubleValue], [self.finalBlueToRed[1] doubleValue]);
+    
+    double blueStepSize = fmax([self.finalRedToBlue[2] doubleValue], [self.finalBlueToRed[2] doubleValue]) - fmin([self.finalRedToBlue[2] doubleValue], [self.finalBlueToRed[2] doubleValue]);
+    
+    double minStep = fmin(fmin(redStepSize, greenStepSize), blueStepSize);
+    
+    // Quick modification of the step sizes
+    double mod = 400;
+    
+    self.redStep = redStepSize/(minStep * mod);
+    self.greenStep = greenStepSize/(minStep * mod);
+    self.blueStep = blueStepSize/(minStep * mod);
+    
+    self.currentStepSizes = [[NSMutableArray alloc] init];
+    [self.currentStepSizes addObject:[NSNumber numberWithDouble:self.redStep]];
+    [self.currentStepSizes addObject:[NSNumber numberWithDouble:self.greenStep]];
+    [self.currentStepSizes addObject:[NSNumber numberWithDouble:self.blueStep]];
+    
+    // Counter to delay color transition
+    self.delayTick = 0;
+    
+    // Initial color
+    self.currentRed = [self.finalRedToBlue[0] doubleValue];
+    self.currentGreen = [self.finalRedToBlue[1] doubleValue];
+    self.currentBlue = [self.finalRedToBlue[2] doubleValue];
+
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
 
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     
     if (self) {
-        [self setAnimationTimeInterval:1/30.0];
-
-        NSSize size = [self bounds].size;
-
-        CGRect r = self.backgroundRect;
-        r.origin.x = 0;
-        r.origin.y = 0;
-        r.size     = NSMakeSize(size.width, size.height);
-        self.backgroundRect = r;
-
-        // colorState - Indicates if we're fading the background from red to blue or visa-versa
-        // 0 - blue to red
-        // 1 - red to blue
-        self.colorState = 0;
-
-        // Load the octacat
-        NSBundle* saverBundle = [NSBundle bundleForClass:[self class]];
-        NSString* octaPath = [saverBundle pathForImageResource:@"baracktocat.jpg"];
-        self.octaImage = [[NSImage alloc] initWithContentsOfFile:octaPath];
-
-        NSSize octoViewSize  = size;
-        NSSize octoImageSize = NSMakeSize(600, 600);
-
-        NSPoint octoViewCenter;
-        octoViewCenter.x = octoViewSize.width  * 0.50;
-        octoViewCenter.y = octoViewSize.height * 0.50;
-
-        NSPoint octoImageOrigin = octoViewCenter;
-        octoImageOrigin.x -= octoImageSize.width  * 0.50;
-        octoImageOrigin.y -= octoImageSize.height * 0.38;
-
-        r = self.octoRect;
-        r.origin = octoImageOrigin;
-        r.size = octoImageSize;
-        self.octoRect = r;
-
-        self.finalBlueToRed = [[NSMutableArray alloc] init];
-        self.finalRedToBlue = [[NSMutableArray alloc] init];
-
-        // Polar red value
-        [self.finalBlueToRed addObject:[NSNumber numberWithDouble:238.0]];
-        [self.finalBlueToRed addObject:[NSNumber numberWithDouble:0.0]];
-        [self.finalBlueToRed addObject:[NSNumber numberWithDouble:0.0]];
-
-        // Polar blue value
-        [self.finalRedToBlue addObject:[NSNumber numberWithDouble:100.0]];
-        [self.finalRedToBlue addObject:[NSNumber numberWithDouble:150.0]];
-        [self.finalRedToBlue addObject:[NSNumber numberWithDouble:160.0]];
-
-        // Calculate the step size to converge on
-        double redStepSize = fmax([self.finalRedToBlue[0] doubleValue], [self.finalBlueToRed[0] doubleValue]) - fmin([self.finalRedToBlue[0] doubleValue], [self.finalBlueToRed[0] doubleValue]);
-
-        double greenStepSize = fmax([self.finalRedToBlue[1] doubleValue], [self.finalBlueToRed[1] doubleValue]) - fmin([self.finalRedToBlue[1] doubleValue], [self.finalBlueToRed[1] doubleValue]);
-
-        double blueStepSize = fmax([self.finalRedToBlue[2] doubleValue], [self.finalBlueToRed[2] doubleValue]) - fmin([self.finalRedToBlue[2] doubleValue], [self.finalBlueToRed[2] doubleValue]);
-
-        double minStep = fmin(fmin(redStepSize, greenStepSize), blueStepSize);
-
-        // Quick modification of the step sizes
-        double mod = 400;
-
-        self.redStep = redStepSize/(minStep * mod);
-        self.greenStep = greenStepSize/(minStep * mod);
-        self.blueStep = blueStepSize/(minStep * mod);
-
-        self.currentStepSizes = [[NSMutableArray alloc] init];
-        [self.currentStepSizes addObject:[NSNumber numberWithDouble:self.redStep]];
-        [self.currentStepSizes addObject:[NSNumber numberWithDouble:self.greenStep]];
-        [self.currentStepSizes addObject:[NSNumber numberWithDouble:self.blueStep]];
-
-        // Counter to delay color transition
-        self.delayTick = 0;
-
-        // Initial color
-        self.currentRed = [self.finalRedToBlue[0] doubleValue];
-        self.currentGreen = [self.finalRedToBlue[1] doubleValue];
-        self.currentBlue = [self.finalRedToBlue[2] doubleValue];
+        [self commonInit];
     }
 
     return self;
