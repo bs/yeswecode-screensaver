@@ -13,14 +13,6 @@
 - (void)commonInit {
     [self setAnimationTimeInterval:1/30.0];
     
-    NSSize size = [self bounds].size;
-    
-    CGRect r = self.backgroundRect;
-    r.origin.x = 0;
-    r.origin.y = 0;
-    r.size     = NSMakeSize(size.width, size.height);
-    self.backgroundRect = r;
-    
     // colorState - Indicates if we're fading the background from red to blue or visa-versa
     // 0 - blue to red
     // 1 - red to blue
@@ -252,7 +244,7 @@
     NSColor *color = [NSColor colorWithDeviceRed: red green: green blue: blue alpha: alpha];
 
     [color set];
-    NSRectFill(self.backgroundRect);
+    NSRectFill(self.bounds);
 }
 
 - (void)animateOneFrame

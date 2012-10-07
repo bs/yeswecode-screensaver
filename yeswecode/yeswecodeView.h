@@ -11,9 +11,6 @@
 @interface yeswecodeView : ScreenSaverView {
 }
 
-@property (nonatomic) NSRect backgroundRect;
-@property (nonatomic) NSRect octoRect;
-
 @property (nonatomic, assign) NSImageView *octoImageView;
 @property (nonatomic, assign) NSTextField *timeLeftLabel;
 
