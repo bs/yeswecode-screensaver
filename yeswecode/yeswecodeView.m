@@ -119,16 +119,6 @@
     return self;
 }
 
-- (void)startAnimation
-{
-    [super startAnimation];
-}
-
-- (void)stopAnimation
-{
-    [super stopAnimation];
-}
-
 // XXX This is inefficient and altogether a little wacky
 // XXX I like the fade from blue->red after the first iteration of accelleration
 //       - Calculate what this is up front
