@@ -213,7 +213,7 @@
 
     // Time that has passed today
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *todayComponents = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit
+    NSDateComponents *todayComponents = [calendar components:NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
                                                     fromDate:now];
 
     long secondsLeft = 60 - [todayComponents second];
