@@ -9,25 +9,24 @@
 #import <ScreenSaver/ScreenSaver.h>
 
 @interface yeswecodeView : ScreenSaverView {
-    NSRect backgroundRect;
-    NSRect octoRect;
-
-    NSImage *octaImage;
-
-    NSInteger colorState;
-    NSMutableArray *finalRedToBlue;
-    NSMutableArray *finalBlueToRed;
-
-    float currentRed;
-    float currentGreen;
-    float currentBlue;
-    
-    NSMutableArray *currentStepSizes;
-    double redStep;
-    double greenStep;
-    double blueStep;
-
-    int delayTick;
 }
+
+@property (nonatomic, assign) NSImageView *octoImageView;
+@property (nonatomic, assign) NSTextField *timeLeftLabel;
+
+@property (nonatomic) NSInteger colorState;
+@property (nonatomic, strong) NSMutableArray *finalRedToBlue;
+@property (nonatomic, strong) NSMutableArray *finalBlueToRed;
+
+@property (nonatomic) float currentRed;
+@property (nonatomic) float currentGreen;
+@property (nonatomic) float currentBlue;
+
+@property (nonatomic, strong) NSMutableArray *currentStepSizes;
+@property (nonatomic) double redStep;
+@property (nonatomic) double greenStep;
+@property (nonatomic) double blueStep;
+
+@property (nonatomic) int delayTick;
 
 @end
