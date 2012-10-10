@@ -27,13 +27,10 @@
     self.octoImageView = imageView;
     
     // Create a label to hold the "time remaining" string
-    NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 20, self.bounds.size.width, 100)];
+    NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.bounds.size.width, 100)];
     
     // Allow the label to grow/shrink with the parent view
     label.autoresizingMask = NSViewWidthSizable;
-    
-    // Anchor the label to the bottom of the parent view
-    label.autoresizingMask |= NSViewMaxYMargin;
     
     label.alignment = NSCenterTextAlignment;
     
@@ -189,10 +186,10 @@
 
 - (void)drawBaracktocat
 {
-    // Position the octocat image in the center of the view
+    // Position the octocat image in the center-ish of the view
     CGRect r = self.octoImageView.frame;
     r.origin.x = self.bounds.size.width / 2 - r.size.width / 2;
-    r.origin.y = self.bounds.size.height / 2 - r.size.width / 2.2;
+    r.origin.y = self.bounds.size.height / 2 - r.size.height / 2.4;
     self.octoImageView.frame = r;
 }
 
@@ -226,11 +223,12 @@
     self.timeLeftLabel.stringValue = timeLeft;
     self.timeLeftLabel.font = [NSFont fontWithName:@"Helvetica Neue" size:self.bounds.size.height * 0.04];
     
-    // Adjust the height of self.timeLeftLabel so that it's always a set distance from
-    // the bottom of its parent view.
+    // Adjust the height of self.timeLeftLabel according to the height of its parent view
+    // Position it just below the OctoCat
     NSSize s = [timeLeft sizeWithAttributes:@{NSFontAttributeName: self.timeLeftLabel.font}];
     CGRect r = self.timeLeftLabel.frame;
     r.size.height = s.height;
+    r.origin.y = self.octoImageView.frame.origin.y - 60;
     self.timeLeftLabel.frame = r;
 }
 
