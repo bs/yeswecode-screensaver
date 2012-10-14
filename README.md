@@ -7,7 +7,3 @@ Not done yet.
 
 Huge thanks to Simon Whitaker, without whom I'd still not be able to debug this.
 (https://github.com/simonwhitaker/twirly-screensaver)
-
-### TODO
-
-Countdown to E-Day.
