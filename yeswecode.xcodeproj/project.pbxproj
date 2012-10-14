@@ -15,6 +15,7 @@
 		BB6F5804161ADE580082F059 /* yeswecodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA8EA461617EDEF001D8E23 /* yeswecodeView.m */; };
 		BB6F5805161ADE940082F059 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */; };
 		BB6F5808161AE3850082F059 /* baracktocat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB801C731618E1B500AC283B /* baracktocat.jpg */; };
+		BB7CDA40162B54CD000036C2 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7CDA3F162B54CD000036C2 /* thumbnail@2x.png */; };
 		BB801C741618E1B500AC283B /* baracktocat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB801C731618E1B500AC283B /* baracktocat.jpg */; };
 		BBA8EA371617EDEF001D8E23 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA361617EDEF001D8E23 /* Cocoa.framework */; };
 		BBA8EA391617EDEF001D8E23 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA381617EDEF001D8E23 /* ScreenSaver.framework */; };
@@ -32,6 +33,7 @@
 		BB6F57E5161AD9030082F059 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BB6F57E8161AD9040082F059 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BB6F57F0161AD9040082F059 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		BB7CDA3F162B54CD000036C2 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
 		BB801C731618E1B500AC283B /* baracktocat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = baracktocat.jpg; sourceTree = "<group>"; };
 		BBA8EA331617EDEF001D8E23 /* yeswecode.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yeswecode.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA8EA361617EDEF001D8E23 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				BB801C731618E1B500AC283B /* baracktocat.jpg */,
+				BB7CDA3F162B54CD000036C2 /* thumbnail@2x.png */,
 				BBA8EA401617EDEF001D8E23 /* yeswecode-Info.plist */,
 				BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */,
 				BBA8EA441617EDEF001D8E23 /* yeswecode-Prefix.pch */,
@@ -244,6 +247,7 @@
 			files = (
 				BBA8EA431617EDEF001D8E23 /* InfoPlist.strings in Resources */,
 				BB801C741618E1B500AC283B /* baracktocat.jpg in Resources */,
+				BB7CDA40162B54CD000036C2 /* thumbnail@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +431,7 @@
 				BB6F5800161AD9040082F059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BBA8EA2B1617EDEF001D8E23 /* Build configuration list for PBXProject "yeswecode" */ = {
 			isa = XCConfigurationList;

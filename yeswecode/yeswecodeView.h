@@ -11,6 +11,8 @@
 @interface yeswecodeView : ScreenSaverView {
 }
 
+@property (nonatomic, assign) NSString *happyOrSad;
+
 @property (nonatomic, assign) NSImageView *octoImageView;
 @property (nonatomic, assign) NSTextField *timeLeftLabel;
 

@@ -14,13 +14,12 @@
 @synthesize timer=_timer;
 @synthesize view=_view;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:self.view.animationTimeInterval
-                                                  target:self.view
-                                                selector:@selector(animateOneFrame)
-                                                userInfo:nil
-                                                 repeats:YES];
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+  self.timer = [NSTimer scheduledTimerWithTimeInterval:self.view.animationTimeInterval
+    target:self.view
+    selector:@selector(animateOneFrame)
+    userInfo:nil
+    repeats:YES];
 }
 
 @end
