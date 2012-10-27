@@ -227,9 +227,9 @@
     NSDateComponents *todayComponents = [calendar components:NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
       fromDate:now];
 
-    long secondsLeft = 60 - [todayComponents second];
-    long minutesLeft = 60 - [todayComponents minute];
-    long hoursLeft = 24 - [todayComponents hour];
+    long secondsLeft = 59 - [todayComponents second];
+    long minutesLeft = 59 - [todayComponents minute];
+    long hoursLeft = 23 - [todayComponents hour];
     long daysLeft = [components day];
 
     timeLeft = [NSString stringWithFormat:@"%ld days, %ld hours, %ld minutes and %ld seconds", daysLeft, hoursLeft, minutesLeft, secondsLeft];
