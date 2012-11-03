@@ -5,5 +5,6 @@ Not done yet.
 
 ### CONTRIBUTORS
 
-Huge thanks to Simon Whitaker, without whom I'd still not be able to debug this.
-(https://github.com/simonwhitaker/twirly-screensaver)
+- Simon Whitaker (@simonwhitaker), without whom I'd still not be able to debug this
+- Ian Dees (@iandees)
+- David Mathers (@davidmathers)

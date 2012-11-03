@@ -216,30 +216,24 @@
   // XXX Just get the seconds between the two dates
   // XXX Don't use dateWithNaturalLanguageString
   NSDate *now = [NSDate date];
-  NSDate *eDay = [NSDate dateWithNaturalLanguageString:@"11/7/2012"];
-
-  NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  NSDateComponents *components = [gregorianCalendar components:NSDayCalendarUnit
-    fromDate:now
-    toDate:eDay
-    options:0];
-  NSString *timeLeft;
+  NSDate *eDay = [NSDate dateWithNaturalLanguageString:@"2012-11-07T00:00:00-05:00"];
   
+  NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  unsigned int unitFlags = NSDayCalendarUnit |
+  NSHourCalendarUnit |
+  NSMinuteCalendarUnit |
+  NSSecondCalendarUnit;
+  NSDateComponents *components = [gregorianCalendar components:unitFlags
+                                                    fromDate:now
+                                                    toDate:eDay
+                                                    options:0];
+  NSString *timeLeft;
+
   if ([components day] <= 0) {
     timeLeft = self.happyOrSad;
   }
   else {
-    // Time that has passed today
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *todayComponents = [calendar components:NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
-      fromDate:now];
-
-    long secondsLeft = 59 - [todayComponents second];
-    long minutesLeft = 59 - [todayComponents minute];
-    long hoursLeft = 23 - [todayComponents hour];
-    long daysLeft = [components day];
-
-    timeLeft = [NSString stringWithFormat:@"%ld %@, %ld %@, %ld %@ and %ld %@", daysLeft, [self pluralize:@"day" number:daysLeft], hoursLeft, [self pluralize:@"hour" number:hoursLeft], minutesLeft, [self pluralize:@"minute" number:minutesLeft], secondsLeft, [self pluralize:@"second" number:secondsLeft]];
+    timeLeft = [NSString stringWithFormat:@"%ld %@, %ld %@, %ld %@ and %ld %@", [components day], [self pluralize:@"day" number:[components day]], [components hour], [self pluralize:@"hour" number:[components hour]], [components minute], [self pluralize:@"minute" number:[components minute]], [components second], [self pluralize:@"second" number:[components second]]];
   }
 
   self.timeLeftLabel.stringValue = timeLeft;
