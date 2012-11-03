@@ -203,6 +203,13 @@
   self.octoImageView.frame = r;
 }
 
+
+// Luckily we can just use a really dumb pluralization method here
+- (NSString *)pluralize: (NSString *)word number: (long)number {
+  NSString *s = [NSString stringWithFormat:@"%@%@", word, (number == 1 ? @"" : @"s")];
+  return s;
+}
+
 - (void)drawTimeLeft {
   // Font setup
   // Time left between E-Day and now
@@ -232,7 +239,7 @@
     long hoursLeft = 23 - [todayComponents hour];
     long daysLeft = [components day];
 
-    timeLeft = [NSString stringWithFormat:@"%ld days, %ld hours, %ld minutes and %ld seconds", daysLeft, hoursLeft, minutesLeft, secondsLeft];
+    timeLeft = [NSString stringWithFormat:@"%ld %@, %ld %@, %ld %@ and %ld %@", daysLeft, [self pluralize:@"day" number:daysLeft], hoursLeft, [self pluralize:@"hour" number:hoursLeft], minutesLeft, [self pluralize:@"minute" number:minutesLeft], secondsLeft, [self pluralize:@"second" number:secondsLeft]];
   }
 
   self.timeLeftLabel.stringValue = timeLeft;

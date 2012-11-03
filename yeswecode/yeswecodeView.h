@@ -11,6 +11,8 @@
 @interface yeswecodeView : ScreenSaverView {
 }
 
+-(NSString*)pluralize:(NSString*)word number:(NSInteger)number;
+
 @property (nonatomic, assign) NSString *happyOrSad;
 
 @property (nonatomic, assign) NSImageView *octoImageView;
