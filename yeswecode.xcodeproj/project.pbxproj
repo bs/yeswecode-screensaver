@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB073F0A1645B87300CEE392 /* obama_unicorn_rainbows.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB073F091645B87300CEE392 /* obama_unicorn_rainbows.jpg */; };
+		BB073F0B1645B87300CEE392 /* obama_unicorn_rainbows.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB073F091645B87300CEE392 /* obama_unicorn_rainbows.jpg */; };
+		BB073F171647328C00CEE392 /* picard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB073F161647328C00CEE392 /* picard.jpg */; };
+		BB073F181647328C00CEE392 /* picard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB073F161647328C00CEE392 /* picard.jpg */; };
 		BB6F57D7161AD9030082F059 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8EA361617EDEF001D8E23 /* Cocoa.framework */; };
 		BB6F57DD161AD9030082F059 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB6F57DB161AD9030082F059 /* InfoPlist.strings */; };
 		BB6F57DF161AD9030082F059 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6F57DE161AD9030082F059 /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -24,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB073F091645B87300CEE392 /* obama_unicorn_rainbows.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = obama_unicorn_rainbows.jpg; sourceTree = "<group>"; };
+		BB073F161647328C00CEE392 /* picard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picard.jpg; sourceTree = "<group>"; };
 		BB6F57D5161AD9030082F059 /* yeswecodeDebuggingPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yeswecodeDebuggingPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6F57DA161AD9030082F059 /* yeswecodeDebuggingPreview-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "yeswecodeDebuggingPreview-Info.plist"; sourceTree = "<group>"; };
 		BB6F57DC161AD9030082F059 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -145,7 +151,9 @@
 		BBA8EA3F1617EDEF001D8E23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB073F161647328C00CEE392 /* picard.jpg */,
 				BB801C731618E1B500AC283B /* baracktocat.jpg */,
+				BB073F091645B87300CEE392 /* obama_unicorn_rainbows.jpg */,
 				BB7CDA3F162B54CD000036C2 /* thumbnail@2x.png */,
 				BBA8EA401617EDEF001D8E23 /* yeswecode-Info.plist */,
 				BBA8EA411617EDEF001D8E23 /* InfoPlist.strings */,
@@ -238,6 +246,8 @@
 				BB6F5808161AE3850082F059 /* baracktocat.jpg in Resources */,
 				BB6F57DD161AD9030082F059 /* InfoPlist.strings in Resources */,
 				BB6F57E9161AD9040082F059 /* MainMenu.xib in Resources */,
+				BB073F0B1645B87300CEE392 /* obama_unicorn_rainbows.jpg in Resources */,
+				BB073F181647328C00CEE392 /* picard.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +258,8 @@
 				BBA8EA431617EDEF001D8E23 /* InfoPlist.strings in Resources */,
 				BB801C741618E1B500AC283B /* baracktocat.jpg in Resources */,
 				BB7CDA40162B54CD000036C2 /* thumbnail@2x.png in Resources */,
+				BB073F0A1645B87300CEE392 /* obama_unicorn_rainbows.jpg in Resources */,
+				BB073F171647328C00CEE392 /* picard.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

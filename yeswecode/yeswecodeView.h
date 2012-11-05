@@ -11,9 +11,13 @@
 @interface yeswecodeView : ScreenSaverView {
 }
 
+-(void)fetchEdayStrings;
 -(NSString*)pluralize:(NSString*)word number:(NSInteger)number;
 
-@property (nonatomic, assign) NSString *happyOrSad;
+@property (nonatomic, retain) NSArray *edayStrings;
+@property (nonatomic, retain) NSString *currentEdayString;
+@property (nonatomic) int changeEdayStringTick;
+
 
 @property (nonatomic, assign) NSImageView *octoImageView;
 @property (nonatomic, assign) NSTextField *timeLeftLabel;

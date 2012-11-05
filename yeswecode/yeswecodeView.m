@@ -10,6 +10,9 @@
 
 @implementation yeswecodeView
 
+int const TIME_BETWEEN_EDAY_STRING_CHANGE = 200;
+int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
+
 - (void)commonInit {
   [self setAnimationTimeInterval:1/30.0];
 
@@ -17,16 +20,17 @@
   // 0 - blue to red
   // 1 - red to blue
   self.colorState = 0;
-
+  
+  
   // Load the octocat into an NSImageView
   NSBundle *saverBundle = [NSBundle bundleForClass:[self class]];
-  NSString *octaPath = [saverBundle pathForImageResource:@"baracktocat.jpg"];
+  NSString *octaPath = [saverBundle pathForImageResource:[self determineImageToRender]];
   NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 600, 600)];
   imageView.image = [[NSImage alloc] initWithContentsOfFile:octaPath];
   [self addSubview:imageView];
   self.octoImageView = imageView;
 
-    // Create a label to hold the "time remaining" string
+  // Create a label to hold the "time remaining" string
   NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.bounds.size.width, 100)];
 
   // Allow the label to grow/shrink with the parent view
@@ -84,29 +88,67 @@
   self.currentRed = [self.finalRedToBlue[0] doubleValue];
   self.currentGreen = [self.finalRedToBlue[1] doubleValue];
   self.currentBlue = [self.finalRedToBlue[2] doubleValue];
+  
+  self.changeEdayStringTick = 0;
+  [self fetchEdayStrings];
+  self.currentEdayString = [self getRandomEdayString];
+}
 
-  // Did we win?
+- (NSString *)determineImageToRender {
   NSString *didWeWin;
-
+  NSString *imageToRender;
+  
   @try {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.openkeyval.org/yeswecode_screensaver_did_win"]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     didWeWin = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     NSLog(@"[DIDHEWIN] Got a response: %@", didWeWin);
   }
-
+  
   @catch (NSException *exception) {
     // Got an exception from the HTTP request.
     NSLog(@"[DIDHEWIN] Caught %@: %@", [exception name], [exception reason]);
   }
+  
   @finally {
     if ([didWeWin isEqualToString:@"no"]) {
-      self.happyOrSad = @"=(";
+      imageToRender = @"picard.jpg";
+    }
+    else if ([didWeWin isEqualToString:@"yes"]) {
+      imageToRender = @"obama_unicorn_rainbows.jpg";
     }
     else {
-      self.happyOrSad = @"=)";
+      imageToRender = @"baracktocat.jpg";
     }
   }
+  
+  return imageToRender;
+}
+
+- (NSString *)getRandomEdayString {
+  unsigned long size = [self.edayStrings count];
+  return self.edayStrings[arc4random() % size];
+}
+
+- (void)fetchEdayStrings {
+  @try {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://yeswecode.webscript.io/get_eday_strings"]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    __autoreleasing NSError* error = nil;
+    self.edayStrings = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:&error];
+    NSLog(@"Fetched %li strings", [self.edayStrings count]);
+  }
+
+  @catch (NSException *exception) {
+    // Got an exception from the HTTP request.
+    NSLog(@"[EDAYSTRING] Caught %@: %@", [exception name], [exception reason]);
+  }
+
+  @finally {
+    if ([self.edayStrings count] == 0) {
+      self.edayStrings = [NSArray arrayWithObject:@"#OFATECH"];
+    }
+  }  
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -215,14 +257,16 @@
   // Time left between E-Day and now
   // XXX Just get the seconds between the two dates
   // XXX Don't use dateWithNaturalLanguageString
-  NSDate *now = [NSDate date];
+//  NSDate *now = [NSDate date];
+  NSDate *now = [NSDate dateWithNaturalLanguageString:@"2012-11-08"];
   NSDate *eDay = [NSDate dateWithNaturalLanguageString:@"2012-11-07T00:00:00-05:00"];
   
   NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  unsigned int unitFlags = NSDayCalendarUnit |
-  NSHourCalendarUnit |
-  NSMinuteCalendarUnit |
-  NSSecondCalendarUnit;
+  unsigned int unitFlags = NSDayCalendarUnit    |
+                           NSHourCalendarUnit   |
+                           NSMinuteCalendarUnit |
+                           NSSecondCalendarUnit;
+
   NSDateComponents *components = [gregorianCalendar components:unitFlags
                                                     fromDate:now
                                                     toDate:eDay
@@ -230,8 +274,21 @@
   NSString *timeLeft;
 
   if ([components day] <= 0) {
-    timeLeft = self.happyOrSad;
+    self.changeEdayStringTick += 1;
+    float edayStringChangeMod = self.changeEdayStringTick % TIME_BETWEEN_EDAY_STRING_CHANGE;
+    float fetchNewStringsMod = self.changeEdayStringTick % TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS;
+    
+    if (edayStringChangeMod == 0) {
+      self.currentEdayString = [self getRandomEdayString];
+    }
+    
+    if (fetchNewStringsMod == 0) {
+      [self fetchEdayStrings];
+    }
+    
+    timeLeft = self.currentEdayString;
   }
+ 
   else {
     timeLeft = [NSString stringWithFormat:@"%ld %@, %ld %@, %ld %@ and %ld %@", [components day], [self pluralize:@"day" number:[components day]], [components hour], [self pluralize:@"hour" number:[components hour]], [components minute], [self pluralize:@"minute" number:[components minute]], [components second], [self pluralize:@"second" number:[components second]]];
   }
