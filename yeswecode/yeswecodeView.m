@@ -255,8 +255,7 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
   // Time left between E-Day and now
   // XXX Just get the seconds between the two dates
   // XXX Don't use dateWithNaturalLanguageString
-//  NSDate *now = [NSDate date];
-  NSDate *now = [NSDate dateWithNaturalLanguageString:@"2012-11-08"];
+  NSDate *now = [NSDate date];
   NSDate *eDay = [NSDate dateWithNaturalLanguageString:@"2012-11-07T00:00:00-05:00"];
   
   NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
