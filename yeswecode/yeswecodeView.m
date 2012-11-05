@@ -20,8 +20,7 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
   // 0 - blue to red
   // 1 - red to blue
   self.colorState = 0;
-  
-  
+
   // Load the octocat into an NSImageView
   NSBundle *saverBundle = [NSBundle bundleForClass:[self class]];
   NSString *octaPath = [saverBundle pathForImageResource:[self determineImageToRender]];
@@ -88,7 +87,7 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
   self.currentRed = [self.finalRedToBlue[0] doubleValue];
   self.currentGreen = [self.finalRedToBlue[1] doubleValue];
   self.currentBlue = [self.finalRedToBlue[2] doubleValue];
-  
+
   self.changeEdayStringTick = 0;
   [self fetchEdayStrings];
   self.currentEdayString = [self getRandomEdayString];
@@ -97,19 +96,19 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
 - (NSString *)determineImageToRender {
   NSString *didWeWin;
   NSString *imageToRender;
-  
+
   @try {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.openkeyval.org/yeswecode_screensaver_did_win"]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     didWeWin = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     NSLog(@"[DIDHEWIN] Got a response: %@", didWeWin);
   }
-  
+
   @catch (NSException *exception) {
     // Got an exception from the HTTP request.
     NSLog(@"[DIDHEWIN] Caught %@: %@", [exception name], [exception reason]);
   }
-  
+
   @finally {
     if ([didWeWin isEqualToString:@"no"]) {
       imageToRender = @"picard.jpg";
@@ -121,7 +120,7 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
       imageToRender = @"baracktocat.jpg";
     }
   }
-  
+
   return imageToRender;
 }
 
@@ -156,7 +155,7 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
   if (self) {
     [self commonInit];
   }
- 
+
   return self;
 }
 
@@ -176,7 +175,6 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
   [self drawBackground];
   [self drawBaracktocat];
   [self drawTimeLeft];
-
 
   // blue -> red
   if (self.colorState == 0) {
@@ -277,18 +275,18 @@ int const TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS = 10000;
     self.changeEdayStringTick += 1;
     float edayStringChangeMod = self.changeEdayStringTick % TIME_BETWEEN_EDAY_STRING_CHANGE;
     float fetchNewStringsMod = self.changeEdayStringTick % TIME_BETWEEN_FETCHING_NEW_EDAY_STRINGS;
-    
+
     if (edayStringChangeMod == 0) {
       self.currentEdayString = [self getRandomEdayString];
     }
-    
+
     if (fetchNewStringsMod == 0) {
       [self fetchEdayStrings];
     }
-    
+
     timeLeft = self.currentEdayString;
   }
- 
+
   else {
     timeLeft = [NSString stringWithFormat:@"%ld %@, %ld %@, %ld %@ and %ld %@", [components day], [self pluralize:@"day" number:[components day]], [components hour], [self pluralize:@"hour" number:[components hour]], [components minute], [self pluralize:@"minute" number:[components minute]], [components second], [self pluralize:@"second" number:[components second]]];
   }
